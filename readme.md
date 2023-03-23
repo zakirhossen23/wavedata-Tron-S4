@@ -22,6 +22,6 @@
 
 ## Test:
 ### Website
-https://wave-data-polkadot.vercel.app
+https://wavedata-tron-s4.vercel.app
 ### App
-https://wave-data-polkadot-app.vercel.app/
+https://wavedata-tron-s4-app.vercel.app/
