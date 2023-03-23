@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     
     let trial_element = await contract._trialMap(Number(trial_id)).call();
     var newTrial = {
-      id: Number(trial_element.trialId),
+      id: Number(trial_element.trial_id),
       title: trial_element.title,
       image: trial_element.image,
       description: trial_element.description,
@@ -28,9 +28,9 @@ export default async function handler(req, res) {
       let survey_element = await contract._surveyMap(Number(all_surveys[i])).call();
 
       var new_survey = {
-        id: Number(survey_element.surveyId),
-        trial_id: Number(survey_element.trialId),
-        user_id: Number(survey_element.userId),
+        id: Number(survey_element.survey_id),
+        trial_id: Number(survey_element.trial_id),
+        user_id: Number(survey_element.user_id),
         name: survey_element.name,
         description: survey_element.description,
         date: survey_element.date,
@@ -47,10 +47,10 @@ export default async function handler(req, res) {
     for (let i = 0; i < all_completed_surveys.length; i++) {
       let completed_survey_element = await contract._completedsurveyMap(Number(all_completed_surveys[i])).call();
       var new_completed_survey = {
-        id: Number(completed_survey_element.completedSurveyId),
-        trial_id: Number(completed_survey_element.trialId),
-        user_id: Number(completed_survey_element.userId),
-        survey_id: Number(completed_survey_element.surveyId),
+        id: Number(completed_survey_element.completed_survey_id),
+        trial_id: Number(completed_survey_element.trial_id),
+        user_id: Number(completed_survey_element.user_id),
+        survey_id: Number(completed_survey_element.survey_id),
         date: completed_survey_element.date,
       };
       if (new_completed_survey.trial_id === Number(trial_id)){

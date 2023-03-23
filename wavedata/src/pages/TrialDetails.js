@@ -245,8 +245,8 @@ function TrialDetails() {
 				audience: Number(allAudiences.length),
 				budget: Number(trial_element.budget),
 				reward_type: trial_element.reward_type,
-				reward_price: Number(trial_element.rewardPrice),
-				total_spending_limit: Number(trial_element.totalSpendingLimit)
+				reward_price: Number(trial_element.reward_price),
+				total_spending_limit: Number(trial_element.total_spending_limit)
 			};
 			setTRIAL_DATA(newTrial);
 		}
@@ -303,13 +303,13 @@ function TrialDetails() {
 						id: i,
 						user_id: Number(element.user_id),
 						name: user_element[2],
-						family_name: fhir_element.familyName,
-						givenname: fhir_element.givenName,
+						family_name: fhir_element.family_name,
+						givenname: fhir_element.given_name,
 						identifier: fhir_element.identifier,
 						phone: fhir_element.phone,
 						gender: fhir_element.gender,
 						about: fhir_element.about,
-						patient_id: fhir_element.patientId,
+						patient_id: fhir_element.patient_id,
 						joined: element.date
 					}
 				]);

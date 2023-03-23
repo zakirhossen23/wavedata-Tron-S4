@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     let trial_element = await contract._trialMap(Number(i)).call();
 
     var newTrial = {
-      id: Number(trial_element.trialId),
+      id: Number(trial_element.trial_id),
       title: trial_element.title,
       image: trial_element.image,
       description: trial_element.description,

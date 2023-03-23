@@ -9,9 +9,9 @@ export default async function handler(req, res) {
 
 	let survey_element = await contract._surveyMap(Number(req.query.surveyid)).call();
 	var new_survey = {
-		id: Number(survey_element.surveyId),
-		trial_id: Number(survey_element.trialId),
-		user_id: Number(survey_element.userId),
+		id: Number(survey_element.survey_id),
+		trial_id: Number(survey_element.trial_id),
+		user_id: Number(survey_element.user_id),
 		name: survey_element.name,
 		description: survey_element.description,
 		date: survey_element.date,

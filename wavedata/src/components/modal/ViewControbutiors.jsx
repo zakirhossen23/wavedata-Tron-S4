@@ -23,7 +23,7 @@ export default function ViewControbutiors({show,setShow, onHide, id}) {
 			const user_element = await window?.contract.getUserDetails(Number(element.user_id)).call();
 			const fhir_element = await window?.contract._fhirMap(Number(user_element[6])).call();
 
-			let given_permission = eval("(" + element.givenPermission + ")");
+			let given_permission = eval("(" + element.given_permission + ")");
 			let FHIRS_COLS = [];
 			let FHIRS_ANS = [];
 
@@ -56,12 +56,12 @@ export default function ViewControbutiors({show,setShow, onHide, id}) {
 			if (given_permission.family)
 				FHIRS_ANS.push({
 					id: "family_name",
-					title: fhir_element.familyName
+					title: fhir_element.family_name
 				});
 			if (given_permission.given)
 				FHIRS_ANS.push({
 					id: "given_name",
-					title: fhir_element.givenName
+					title: fhir_element.given_name
 				});
 			if (given_permission.gender)
 				FHIRS_ANS.push({
@@ -83,13 +83,13 @@ export default function ViewControbutiors({show,setShow, onHide, id}) {
 				user_id: Number(element.user_id),
 				photo: user_element[0],
 				name: user_element[2],
-				family_name: fhir_element.familyName,
-				givenname: fhir_element.givenName,
+				family_name: fhir_element.family_name,
+				givenname: fhir_element.given_name,
 				identifier: fhir_element.identifier,
 				phone: fhir_element.phone,
 				gender: fhir_element.gender,
 				about: fhir_element.about,
-				patient_id: fhir_element.patientId,
+				patient_id: fhir_element.patient_id,
 				joined: element.date,
 				given_permission: given_permission
 			});

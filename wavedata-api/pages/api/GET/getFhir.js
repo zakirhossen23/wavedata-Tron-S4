@@ -10,14 +10,14 @@ export default async function handler(req, res) {
 	let userdetails = await contract.getUserDetails(Number(req.query.userid)).call();
 	let fhir_element = await contract._fhirMap(Number(userdetails[6])).call();
 	var newFhir = {
-		id: Number(fhir_element.userId),
-		family_name: fhir_element.familyName,
-		given_name: fhir_element.givenName,
+		id: Number(fhir_element.user_id),
+		family_name: fhir_element.family_name,
+		given_name: fhir_element.given_name,
 		identifier: fhir_element.identifier,
 		phone: fhir_element.phone,
 		gender: fhir_element.gender,
 		about: fhir_element.about,
-		patient_id: fhir_element.patientId,
+		patient_id: fhir_element.patient_id,
 		privatekey: userdetails[4] + "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 		image: fhir_element.image,
 		credits: fhir_element.credits
