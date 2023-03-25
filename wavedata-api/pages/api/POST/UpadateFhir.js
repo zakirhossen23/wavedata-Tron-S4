@@ -1,5 +1,5 @@
 import {ethers} from "ethers";
-import { base64DecodeUnicode } from "../../../contract/useContract.js";
+import { base64DecodeUnicode } from "../../../contract/useContract.ts";
 export default async function handler(req, res) {
 	try {
 		let FixCors = await import("../../../contract/fixCors.js");
