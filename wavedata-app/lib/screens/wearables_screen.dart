@@ -78,8 +78,12 @@ class _WearablesScreenState extends ConsumerState<WearablesScreen> {
   Future<void> GetBloodRate() async {
     chartDataBlood = [];
         // 'https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${this.AccountTokenAddress}&body_startDay=${(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 9)).toLocal()}&body_endDay=${(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3)).toLocal()}&body_valueTypes=3001');
+   
+    var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 7));
+    var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
+
     var url = Uri.parse(
-        'https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${this.AccountTokenAddress}&body_startDay=${(new DateTime(2023, 01, 11)).toLocal()}&body_endDay=${(new DateTime(2023, 01, 17)).toLocal()}&body_valueTypes=3001');
+        'https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${this.AccountTokenAddress}&body_startDay=${startDate}&body_endDay=${endDate}&body_valueTypes=3001');
     final response = await http.get(url);
     var responseData = json.decode(response.body);
     var parsed = json.decode(responseData['value']);
@@ -109,11 +113,10 @@ class _WearablesScreenState extends ConsumerState<WearablesScreen> {
     setState(() {
       chartDataSleep = [];
     });
-    // var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(
-    //     DateTime.now().year, DateTime.now().month, DateTime.now().day - 10));
-    // var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
-    var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023, 01, 11));
-    var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023,01, 17));
+    var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 7));
+    var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
+    // var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023, 01, 11));
+    // var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023,01, 17));
     var url = Uri.parse(
         'https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${this.AccountTokenAddress}&body_startDay=${startDate}&body_endDay=${endDate}&body_valueTypes=2002,2003,2005');
     final response = await http.get(url);
@@ -151,10 +154,10 @@ class _WearablesScreenState extends ConsumerState<WearablesScreen> {
     setState(() {
       chartDataSteps = [];
     });
-    // var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 9));
-    // var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3));
-    var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023, 01, 11));
-    var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023,01,17));
+    var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 7));
+    var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
+    // var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023, 01, 11));
+    // var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023,01,17));
     var url = Uri.parse(
         'https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${this.AccountTokenAddress}&body_startDay=${startDate}&body_endDay=${endDate}&body_valueTypes=1000');
     final response = await http.get(url);
@@ -175,10 +178,10 @@ class _WearablesScreenState extends ConsumerState<WearablesScreen> {
     setState(() {
       chartDataCalories = [];
     });
-    // var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 9));
-    // var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3));
-    var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023, 01,11));
-    var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023,01,17));
+    var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 7));
+    var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
+    // var startDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023, 01,11));
+    // var endDate = DateFormat('yyyy-MM-dd').format(new DateTime(2023,01,17));
     var url = Uri.parse(
         'https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${this.AccountTokenAddress}&body_startDay=${startDate}&body_endDay=${endDate}&body_valueTypes=1010');
     final response = await http.get(url);
