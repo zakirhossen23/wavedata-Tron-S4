@@ -32,5 +32,5 @@ export default async function handler(req, res) {
                         shouldPollResponse: false
                     });
 
-	res.status(200).json({status: 200, value: "Updated!"});
+	res.status(200).json({status: 200, value: "Updated!",bodies: [Number(userid), patient_details["name"][0]['family'], givenname, identifier, patient_details["telecom"][0]["value"].toString(), patient_details["gender"], decodedDisease, patientid]});
 }
