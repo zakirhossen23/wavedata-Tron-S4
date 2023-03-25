@@ -58,8 +58,6 @@ The following items are about activities you might do during a typical day. Does
 
 Section 6 (Rating 5)
 PAIN
-1. How much bodily pain have you had during the past 4 weeks?
-2. During the past 4 weeks, how much did pain intergere with your normal work (including both work outside the home and housework)?
 ----------Open Questions
 
 1. What medications did you take today?
@@ -99,7 +97,7 @@ Caryan
 
 Caryn49@gmail.com
 
-9873c363370664864c07abfd6d50cf7ad19b490c0a60b707a51e390e004d6a62
+e95a71ad92a8a28ece70f4fcf8a2d98eeb0eade2e7972040c524c1ac993c9e8f
 
 Caryn49
 999-56-7350

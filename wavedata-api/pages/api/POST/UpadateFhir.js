@@ -1,4 +1,5 @@
 import {ethers} from "ethers";
+import { base64DecodeUnicode } from "../../../contract/useContract.js";
 export default async function handler(req, res) {
 	try {
 		let FixCors = await import("../../../contract/fixCors.js");
@@ -25,7 +26,7 @@ export default async function handler(req, res) {
 	
 	let DiseasesDiagnostic = allDiagnostic[allDiagnostic.length - 1]["resource"]["presentedForm"][0]["data"];
 	
-	let decodedDisease = useContract.base64DecodeUnicode(DiseasesDiagnostic);
+	let decodedDisease = base64DecodeUnicode(DiseasesDiagnostic);
 	await contract.UpdateFhir(Number(userid), patient_details["name"][0]['family'], givenname, identifier, patient_details["telecom"][0]["value"].toString(), patient_details["gender"], decodedDisease, patientid).send({
                         feeLimit: 1_000_000_000,
                         shouldPollResponse: false
