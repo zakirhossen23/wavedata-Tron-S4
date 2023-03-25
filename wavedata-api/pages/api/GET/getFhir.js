@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 	const {contract, signerAddress} = await useContract.default();
 	
 	let userdetails = await contract.getUserDetails(Number(req.query.userid)).call();
-	let fhir_element = await contract._fhirMap(Number(userdetails[6])).call();
+	let fhir_element = await contract._fhirMap(Number(req.query.userid)).call();
 	var newFhir = {
 		id: Number(fhir_element.user_id),
 		family_name: fhir_element.family_name,
