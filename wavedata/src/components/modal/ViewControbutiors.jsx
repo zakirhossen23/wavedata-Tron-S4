@@ -21,7 +21,7 @@ export default function ViewControbutiors({show,setShow, onHide, id}) {
 			
 			const element = await window?.contract._ongoingMap(Number(id)).call();
 			const user_element = await window?.contract.getUserDetails(Number(element.user_id)).call();
-			const fhir_element = await window?.contract._fhirMap(Number(user_element[6])).call();
+			const fhir_element = await window?.contract._fhirMap(Number(element.user_id)).call();
 
 			let given_permission = eval("(" + element.given_permission + ")");
 			let FHIRS_COLS = [];
@@ -149,10 +149,10 @@ export default function ViewControbutiors({show,setShow, onHide, id}) {
 	async function GetSleepWearableData(userid, userToken) {
 		var today = new Date();
 		var startDate = getFormattedDate(new Date(today.getFullYear(), today.getMonth(), today.getDate()  - 7));
-		var endDate = getFormattedDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1));
+		var endDate = getFormattedDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1));
 		let response = await (
 			await fetch(
-				`https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${userToken}&body_startDay=${startDate}&body_endDay=${endDate}&body_valueTypes=2002,2003,2005`
+				`https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${userToken}&body_startDay=${startDate}&body_endDay=${endDate}&body_valueTypes=2001`
 			)
 		).json();
 		let parsed = JSON.parse(response.value);
@@ -186,7 +186,7 @@ export default function ViewControbutiors({show,setShow, onHide, id}) {
 	async function GetOneValueTypesWearableData(userid, userToken, valueTypes) {
 		var today = new Date();
 		var startDate = getFormattedDate(new Date(today.getFullYear(), today.getMonth(), today.getDate()  - 7));
-		var endDate = getFormattedDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1));
+		var endDate = getFormattedDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1));
 		let response = await (
 			await fetch(
 				`https://wavedata-tron-s4-api.netlify.app/api/GET/Wearable/customAPI?userid=${userid}&url=https://api.und-gesund.de/v5/dailyDynamicValues&token=${userToken}&body_startDay=${startDate}&body_endDay=${endDate}&body_valueTypes=${valueTypes}`
