@@ -1,6 +1,9 @@
-
 module.exports = {
-  reactStrictMode: true,
+  reactStrictMode: true,  
+  images: {
+    loader: 'akamai',
+    path: '',
+  },
   webpack: (config) => {
     config.resolve.fallback = {
       http: require.resolve('stream-http'),
