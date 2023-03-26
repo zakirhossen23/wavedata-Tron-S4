@@ -9,7 +9,7 @@ export default function useContract() {
 			const contract = { contract: null, signerAddress: null, fD: fetchData };
 
 			if (window.localStorage.getItem("type") === "tronlink"){
-				contract.contract =  await window?.tronWeb?.contract().at('TQFKAW4s5hriD5RGTHBji3aUJp4tYS3sW7');
+				contract.contract =  await window?.tronWeb?.contract().at('TVGxuDtrYTK8MXhGbCBV9mmnydh4nK1HXh');
 				contract.signerAddress =  window?.tronWeb?.defaultAddress?.base58;
 				window.contract = contract.contract;
 				setContractInstance(contract);
@@ -20,7 +20,7 @@ export default function useContract() {
 				const privateKey = '1468f14005ff479c5f2ccde243ad3b85b26ff40d5a4f78f4c43c81a1b3f13a03';
 				const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
 				contract.signerAddress =  tronWeb.address.fromPrivateKey("1468f14005ff479c5f2ccde243ad3b85b26ff40d5a4f78f4c43c81a1b3f13a03");
-				contract.contract = await tronWeb.contract().at('TQFKAW4s5hriD5RGTHBji3aUJp4tYS3sW7');
+				contract.contract = await tronWeb.contract().at('TVGxuDtrYTK8MXhGbCBV9mmnydh4nK1HXh');
 				window.contract = contract.contract;
 				setContractInstance(contract);
 			}
