@@ -9,10 +9,9 @@ export default function useContract() {
 			const contract = { contract: null, signerAddress: null, fD: fetchData };
 
 			if (window.localStorage.getItem("type") === "tronlink"){
-				contract.contract =  await window?.tronWeb?.contract().at('TVGxuDtrYTK8MXhGbCBV9mmnydh4nK1HXh');
+				contract.contract =  await window?.tronWeb?.contract().at('TPSazvJzv25M8P6tpb8maJ51x1mEMyYPns');
 				contract.signerAddress =  window?.tronWeb?.defaultAddress?.base58;
 				window.contract = contract.contract;
-				window.contract.methods;
 				setContractInstance(contract);
 			}else{
 				const fullNode = 'https://api.nileex.io';
@@ -21,9 +20,8 @@ export default function useContract() {
 				const privateKey = '1468f14005ff479c5f2ccde243ad3b85b26ff40d5a4f78f4c43c81a1b3f13a03';
 				const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
 				contract.signerAddress =  tronWeb.address.fromPrivateKey("1468f14005ff479c5f2ccde243ad3b85b26ff40d5a4f78f4c43c81a1b3f13a03");
-				contract.contract = await tronWeb.contract().at('TVGxuDtrYTK8MXhGbCBV9mmnydh4nK1HXh');
+				contract.contract = await tronWeb.contract().at('TPSazvJzv25M8P6tpb8maJ51x1mEMyYPns');
 				window.contract = contract.contract;
-				window.contract = window.contract.methods;
 				setContractInstance(contract);
 			}
 		} catch (error) {
