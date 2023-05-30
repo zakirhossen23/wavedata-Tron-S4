@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+
 import TronWeb from 'tronweb';
 
 export default async function useContract() {
@@ -14,7 +14,7 @@ export default async function useContract() {
 	const privateKey = '1468f14005ff479c5f2ccde243ad3b85b26ff40d5a4f78f4c43c81a1b3f13a03';
 	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
 	contractInstance.signerAddress =  tronWeb.address.fromPrivateKey(privateKey);
-	contractInstance.contract = await tronWeb.contract().at('TPSazvJzv25M8P6tpb8maJ51x1mEMyYPns');
+	contractInstance.contract = await tronWeb.contract().at('TDefGcxmW5KEHybkF7JcA6gP8e8oazPkWm');
 
 	return contractInstance;
 }

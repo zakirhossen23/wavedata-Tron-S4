@@ -14,7 +14,7 @@ contract WaveData {
         ///Password of user
         string password;
         ///Address of Wallet
-        string walletaddress;
+        address walletaddress;
         ///Privatekey of user
         string privatekey;
         /// The User Image
@@ -133,6 +133,14 @@ contract WaveData {
         uint256 survey_id;
         string date;
     }
+    /// Paid Survey Trial
+    struct paid_survey_struct {
+        uint256 paid_survey_id;
+        uint256 trial_id;
+        uint256 user_id;
+        uint256 survey_id;
+        string date;
+    }
 
     uint256 public _UserIds;
     uint256 public _FhirIds;
@@ -165,6 +173,8 @@ contract WaveData {
         public _questionanswerdMap;
     /// The map of all the Completed Surveys.
     mapping(uint256 => completed_survey_struct) public _completedsurveyMap;
+    /// The map of all the Paid Surveys.
+    mapping(uint256 => paid_survey_struct) public _completedsurveyMap;
 
     address public owner;
 
@@ -194,7 +204,7 @@ contract WaveData {
         string memory email,
         string memory password,
         string memory accesstoken,
-        string memory walletaddress
+        address walletaddress
     ) public {
         // Store the metadata of user in the map.
         _userMap[_UserIds] = user_struct({
@@ -287,7 +297,7 @@ contract WaveData {
         string memory date,
         string memory image,
         uint256 reward
-    ) public {
+    ) public payable {
         // Store the metadata of Survey in the map.
         _surveyMap[_SurveyIds] = survey_struct({
             survey_id: _SurveyIds,
@@ -534,6 +544,10 @@ contract WaveData {
         _CompletedSurveyIds++;
     }
 
+    function WithDrawAmount(uint256 user_id, uint256 amount) public {
+         (bool sent,) = payable(_userMap[userid].walletaddress).call{value: amount}(""); 
+        _userMap[userid].credits -= amount;
+    }
     function getAllCompletedSurveysIDByUser(uint256 user_id)
         public
         view
