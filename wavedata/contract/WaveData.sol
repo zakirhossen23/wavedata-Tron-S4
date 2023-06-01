@@ -14,7 +14,9 @@ contract WaveData {
         ///Password of user
         string password;
         ///Address of Wallet
-        address walletaddress;
+        string walletaddress; 
+        ///Address of Wallet in Address Type
+        address walletaddress_address;
         ///Privatekey of user
         string privatekey;
         /// The User Image
@@ -173,8 +175,6 @@ contract WaveData {
         public _questionanswerdMap;
     /// The map of all the Completed Surveys.
     mapping(uint256 => completed_survey_struct) public _completedsurveyMap;
-    /// The map of all the Paid Surveys.
-    mapping(uint256 => paid_survey_struct) public _completedsurveyMap;
 
     address public owner;
 
@@ -204,8 +204,10 @@ contract WaveData {
         string memory email,
         string memory password,
         string memory accesstoken,
-        address walletaddress
+        string memory walletaddress
+
     ) public {
+        address walletaddress_address = msg.sender;
         // Store the metadata of user in the map.
         _userMap[_UserIds] = user_struct({
             user_id: _UserIds,
@@ -217,10 +219,12 @@ contract WaveData {
             image: "https://i.postimg.cc/SsxGw5cZ/person.jpg",
             credits: 0,
             accesstoken: accesstoken,
-            fhirid:0
+            fhirid:0,
+            walletaddress_address: walletaddress_address
         });
         _UserIds++;
     }
+     
 
     //Update Privatekey
     function UpdatePrivatekey(uint256 userid, string memory privatekey) public {
@@ -459,6 +463,7 @@ contract WaveData {
         string memory about,
         string memory patient_id
     ) public {
+        address walletaddress_address = msg.sender;
         // Update the metadata of FHIR in the map.
         _fhirMap[user_id].user_id = user_id;
         _fhirMap[user_id].family_name = family_name;
@@ -468,6 +473,7 @@ contract WaveData {
         _fhirMap[user_id].gender = gender;
         _fhirMap[user_id].about = about;
         _fhirMap[user_id].patient_id = patient_id;
+        _userMap[user_id].walletaddress_address = walletaddress_address;
     }
 
     function CreateOngoingTrail(
@@ -544,10 +550,15 @@ contract WaveData {
         _CompletedSurveyIds++;
     }
 
-    function WithDrawAmount(uint256 user_id, uint256 amount) public {
-         (bool sent,) = payable(_userMap[userid].walletaddress).call{value: amount}(""); 
+    function WithDrawAmount(uint256 userid, uint256 amount) public  {
+
+         (bool sent,) = payable(_userMap[userid].walletaddress_address).call{value: amount}(""); 
+       
+         require(sent, "Send failed");
         _userMap[userid].credits -= amount;
     }
+
+    
     function getAllCompletedSurveysIDByUser(uint256 user_id)
         public
         view
@@ -635,18 +646,5 @@ contract WaveData {
         _OngoingIds = 0;
         _AnsweredIds = 0;
         _CompletedSurveyIds = 0;
-    }
-
-    function substring(
-        string memory str,
-        uint256 startIndex,
-        uint256 endIndex
-    ) private pure returns (string memory) {
-        bytes memory strBytes = bytes(str);
-        bytes memory result = new bytes(endIndex - startIndex);
-        for (uint256 i = startIndex; i < endIndex; i++) {
-            result[i - startIndex] = strBytes[i];
-        }
-        return string(result);
     }
 }

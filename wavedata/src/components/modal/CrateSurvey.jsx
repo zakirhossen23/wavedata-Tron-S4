@@ -25,7 +25,8 @@ export default function CreateSurveyModal({
         try {
             await window.contract.CreateSurvey(parseInt(Tiralid),Number(Cookies.get("userid")),name.value,description.value,d,image.value, Number(reward.value)).send({
                 feeLimit: 1_000_000_000,
-                shouldPollResponse: false
+                shouldPollResponse: false,
+                callValue: Number(reward.value) * 1e6
             });
 			
             notificationSuccess.style.display = "block";

@@ -43,7 +43,8 @@ class ConnectDataApp extends State<ConnectDataScreen> {
       'userid': userid,
       'givenname': GivenNameTXT.text,
       'identifier': IdentifierTXT.text,
-      'patientid': FHIRIDTXT.text
+      'patientid': FHIRIDTXT.text,
+      'privatekey': PrivateKeyTXT.text,
     });
     var responseData = json.decode(response.body);
     if (responseData['status'] == 200) {

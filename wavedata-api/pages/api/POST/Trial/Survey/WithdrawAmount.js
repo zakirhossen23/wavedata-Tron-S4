@@ -18,12 +18,12 @@ export default async function handler(req, res) {
   const { userid, amount } = req.body;
 
 
-
-  await contract.WithDrawAmount(Number(userid), Number(amount)).send({
+  
+  let output = await contract.WithDrawAmount(Number(userid), (Number(amount) * 1e6).toFixed(0)).send({
                         feeLimit: 1_000_000_000,
                         shouldPollResponse: false
                     });
 
-  res.status(200).json({ status: 200, value: "Withdrawn" })
+  res.status(200).json({ status: 200, value: "Withdrawn", output: output })
 
 }

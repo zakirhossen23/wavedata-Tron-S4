@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 	let details_element = await contract.getUserDetails(Number(userid)).call();
   
   
-  let credits = Number(details_element[1]) + Number(survey_element.reward)
+  let credits = Number(details_element[1]) + (Number(survey_element.reward)* 1e6)
 
   
   await contract.UpdateUser(Number(userid), details_element[0], Number(credits)).send({

@@ -3,6 +3,7 @@ steve.thijssen@gmail.com
 
 
 FHIR
+https://portal.live.isccloud.io/
 wavedata2022
 April14202233%
 
@@ -19,7 +20,7 @@ https://wallpapercave.com/wp/wp6770165.jpg
 
 Survey:
 1.Survey F36 & Measurements
-The Medical Outcomes Study (MOS) was a 2-year observational study of patients with chronic conditions, conducted in a cross-sectional phase among 22,462 patients and in a longitudinal phase among 2349 patients (Tarlov et al. 1989). One of its two main purposes was to analyze how outcomes vary depending on factors such as the type of delivery system in which a patient receives care, clinician specialty training, and intensity of resource use. Another main purpose was to develop practical tools for monitoring patient outcomes and their determinants. 
+The Medical Outcomes Study (MOS) was a 2-year observational study of patients with chronic conditions, conducted in a cross-sectional phase among 22,462 patients and in a longitudinal phase among 2349 patients (Tarlov et al. 1989). 
 
 https://i.postimg.cc/VNZz7rrj/Rectangle-3-1.png
 

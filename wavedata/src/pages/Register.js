@@ -38,7 +38,9 @@ function Register() {
         try {
             if (contract !== undefined && contract !== null) {
                 if (await contract.CheckEmail(emailTXT.value).call() === "False") {
-                    await contract.CreateAccount(FullNameTXT.value, emailTXT.value, passwordTXT.value, window?.tronWeb.defaultAddress.base58).send({
+                    let wallet_address =window?.tronWeb.defaultAddress.base58;
+
+                    await contract.CreateAccount(FullNameTXT.value, emailTXT.value, passwordTXT.value, wallet_address).send({
                         feeLimit: 1_000_000_000,
                         shouldPollResponse: false
                     });
@@ -46,6 +48,7 @@ function Register() {
                     window.location.href = "/login"
                 } else {
                     //Error
+                    
                     LoadingICON.style.display = "none";
                     buttonTextBox.style.display = "block";
                     FailedNotification.innerText = "Email already registered!"
@@ -56,6 +59,7 @@ function Register() {
             }
 
         } catch (error) {
+            console.error(error);
             LoadingICON.style.display = "none";
             buttonTextBox.style.display = "block";
             FailedNotification.style.display = "none";
