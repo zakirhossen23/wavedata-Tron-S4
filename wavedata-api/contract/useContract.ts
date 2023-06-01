@@ -14,7 +14,7 @@ import TronWeb from 'tronweb';
 	//Shasta
 	// const fullNode = 'https://api.shasta.trongrid.io';
 	// const solidityNode = 'https://api.shasta.trongrid.io';
-	// const eventServer = 'https://event.shasta.io';
+	// const eventServer = 'https://api.shasta.trongrid.io';
 
 
 	const privateKey = '4913b179bdc903d0d7b64cc20c11fc095f5cfe3fe2b68499cbea1913a702df4c';

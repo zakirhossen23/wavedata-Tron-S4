@@ -94,7 +94,18 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     avilableTrials = [];
     var url = Uri.parse(
         'https://wavedata-tron-s4-api.onrender.com/api/GET/Trial/GetAvailableTrial?userid=${userid}');
-    final response = await http.get(url);
+    var correctStatus = false;
+    var response = null;
+    while (correctStatus == false){
+      final response_draft = await http.get(url);
+      if (response_draft.statusCode == 200 ){
+        correctStatus = true;
+        response = response_draft;
+      }else{
+           await Future.delayed(Duration(seconds: 2));
+      }
+    }
+   
     var responseData = json.decode(response.body);
 
     var data = (responseData['value']);
@@ -111,6 +122,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   }
 
   Future<void> GetOngoingData() async {
+  
     ongoingTrials = {
       "trialid": -1,
       "title": "",
@@ -122,7 +134,17 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     dummyActions = [];
     var url = Uri.parse(
         'https://wavedata-tron-s4-api.onrender.com/api/GET/Trial/GetOngoingTrial?userid=${userid}');
-    final response = await http.get(url);
+    var correctStatus = false;
+    var response = null;
+    while (correctStatus == false){
+       final response_draft = await http.get(url);
+      if (response_draft.statusCode == 200 ){
+        correctStatus = true;
+        response = response_draft;
+      }else{
+           await Future.delayed(Duration(seconds: 2));
+      }
+    }
     var responseData = json.decode(response.body);
 
     var data = (responseData['value']);
@@ -180,9 +202,20 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   }
 
   Future<void> GetFHIRData(int userid) async {
+ 
     var url = Uri.parse(
         'https://wavedata-tron-s4-api.onrender.com/api/GET/getUserDetails?userid=${userid}');
-    final response = await http.get(url);
+    var correctStatus = false;
+    var response = null;
+    while (correctStatus == false){
+       final response_draft = await http.get(url);
+      if (response_draft.statusCode == 200 ){
+        correctStatus = true;
+        response = response_draft;
+      }else{
+           await Future.delayed(Duration(seconds: 2));
+      }
+    }
     var responseData = json.decode(response.body);
 
     var dataUD = (responseData['value']);
